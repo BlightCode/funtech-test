@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and publish the Docker image
+        run: |
+          docker login --username ${{ github.repository_owner }} --password ${{ secrets.PAT }} ghcr.io
+          docker build . --tag ghcr.io/${{ github.repository_owner }}/funtech-test:latest
+          docker push ghcr.io/${{ github.repository_owner }}/funtech-test:latest

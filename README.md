@@ -1,3 +1,12 @@
+## Goal
+
+Create responsive design with Header, Footer and 3 sections based on Figma design
+
+**Responsive breakpoints:**
+- desktop: 1440px - 3840px
+- tablet: 600px - 1440px
+- mobile: 375px - 600px
+
 ## Getting Started
 
 To run the development server use command:

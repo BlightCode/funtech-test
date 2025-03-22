@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Poppins, Public_Sans } from "next/font/google";
+import { Inter, Outfit, Poppins, Public_Sans } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
@@ -16,7 +16,12 @@ const fontPoppins = Poppins({
 });
 
 const fontPublicSans = Public_Sans({
-  variable: "--font-inter",
+  variable: "--font-public-sans",
+  subsets: ["latin"],
+});
+
+const fontOutfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
@@ -33,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontInter.variable} ${fontPoppins.variable} ${fontPublicSans.variable} h-full min-h-screen scroll-pt-[74px] scroll-smooth`}
+      className={`${fontInter.variable} ${fontPoppins.variable} ${fontPublicSans.variable} ${fontOutfit.variable} h-full min-h-screen scroll-pt-[74px] scroll-smooth`}
     >
       <body className="flex flex-col items-center justify-between overflow-x-hidden">
         <Header />

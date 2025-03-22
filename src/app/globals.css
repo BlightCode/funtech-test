@@ -20,6 +20,8 @@
   --color-black: var(--black);
   --font-inter: var(--font-inter);
   --font-poppins: var(--font-poppins);
+  --font-public-sans: var(--font-public-sans);
+  --font-outfit: var(--font-outfit);
   --breakpoint-sm: 375px;
   --breakpoint-md: 600px;
   --breakpoint-lg: 1440px;
@@ -31,7 +33,13 @@
   body {
     background: var(--background);
     color: var(--foreground);
-    font-family: Inter, Poppins, Public_Sans, Halvetica, sans-serif;
+    font-family:
+      Inter,
+      Poppins,
+      Public Sans,
+      Outfit,
+      Halvetica,
+      sans-serif;
   }
 
   section {

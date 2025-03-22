@@ -18,8 +18,8 @@
   --color-text: var(--text);
   --color-white: var(--white);
   --color-black: var(--black);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-inter: var(--font-inter);
+  --font-poppins: var(--font-poppins);
   --breakpoint-sm: 375px;
   --breakpoint-md: 600px;
   --breakpoint-lg: 1440px;
@@ -31,16 +31,31 @@
   body {
     background: var(--background);
     color: var(--foreground);
-    font-family: Inter, Poppins, Halvetica, sans-serif;
+    font-family: Inter, Poppins, Public_Sans, Halvetica, sans-serif;
   }
 
   section {
     max-width: 1440px;
     width: 100%;
-    @apply px-[30px] md:px-[67px] lg:px-[97px];
+    @apply px-[30px] md:px-16 lg:px-24;
   }
 
   button {
     cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  @media (max-width: 600px) {
+    .mobile-header {
+      padding-top: 30px !important;
+    }
   }
 }

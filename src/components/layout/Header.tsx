@@ -3,10 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
 
 import logoBlack from "@/../public/logo/logo-black.svg";
 import menuIcon from "@/../public/icons/menu.svg";
+
+import socialIcon1 from "@/../public/icons/social/social-1.svg";
+import socialIcon2 from "@/../public/icons/social/social-2.svg";
+import socialIcon3 from "@/../public/icons/social/social-3.svg";
+import socialIcon4 from "@/../public/icons/social/social-4.svg";
 
 export const navLinks: string[] = ["discover", "сreators", "sell", "stats"];
 
@@ -17,7 +22,7 @@ export default function Header() {
   const headerColor = useTransform(
     scrollY,
     [0, 200],
-    ["rgba(255, 255, 255, 0)", "#FFF"]
+    ["rgba(255, 255, 255, 0)", "#F9F9F9"]
   );
 
   const mobileBorder = useTransform(
@@ -27,22 +32,23 @@ export default function Header() {
   );
 
   return (
-    <>
-      <header
+    <AnimatePresence>
+      <motion.header
+        style={{
+          backgroundColor: headerColor,
+        }}
         id="header"
-        className="sticky top-0 z-30 flex w-full justify-center"
+        className="sticky top-0 z-30 flex w-full flex-col items-center justify-center"
       >
         <motion.section
           style={{
             paddingTop: headerPaddingTop,
-            backgroundColor: headerColor,
           }}
-
-          className="w-full mobile-header"
+          className="mobile-header w-full"
         >
           <motion.div
             style={{
-              borderColor: mobileBorder,
+              borderColor: isOpen ? "#CBCBCB" : mobileBorder,
             }}
             className="flex w-full items-center justify-between gap-8 border-b-[0.5px] pb-[30px] md:border-none md:py-4"
           >
@@ -59,7 +65,7 @@ export default function Header() {
                 {navLinks.map((link, linkIndex) => (
                   <Link
                     href={`#${link}`}
-                    className="text-text uppercase md:text-sm lg:text-lg"
+                    className="text-text font-medium uppercase md:text-sm lg:text-lg"
                     key={`link-${linkIndex}`}
                   >
                     {link}
@@ -71,11 +77,123 @@ export default function Header() {
               Connect Wallet
             </button>
             <button className="size-10 min-w-10 md:hidden">
-              <Image src={menuIcon} alt="menu" />
+              <Image
+                src={menuIcon}
+                alt="menu"
+                onClick={() => setIsOpen(!isOpen)}
+              />
             </button>
           </motion.div>
         </motion.section>
-      </header>
-    </>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.section
+              initial={{ y: "-100vh" }}
+              animate={{ y: "0vh" }}
+              exit={{ y: "-100vh" }}
+              transition={{
+                ease: "easeInOut",
+                duration: 0.5,
+              }}
+              className="bg-background fixed top-0 -z-20 flex h-[calc(100vh)] w-full flex-col justify-between px-[30px] pt-[calc(44px+107px)] pb-10 md:hidden"
+            >
+              <div className="flex flex-col gap-11">
+                <div className="flex flex-col gap-5">
+                  {navLinks.map((link, linkIndex) => (
+                    <motion.div
+                      key={`mobile-link-${linkIndex}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{
+                        delay: linkIndex / 10 + 0.6,
+                        duration: 0.6,
+                      }}
+                    >
+                      <Link
+                        href={`#${link}`}
+                        className="text-text text-[40px] leading-10 font-medium uppercase"
+                      >
+                        {link}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-10">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      delay: 1,
+                      duration: 0.6,
+                    }}
+                  >
+                    <Image
+                      src={socialIcon1}
+                      alt="social-1"
+                      className="size-6 min-w-6 cursor-pointer transition-all duration-150 hover:brightness-0"
+                    />
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      delay: 1.1,
+                      duration: 0.6,
+                    }}
+                  >
+                    <Image
+                      src={socialIcon2}
+                      alt="social-2"
+                      className="size-6 min-w-6 cursor-pointer transition-all duration-150 hover:brightness-0"
+                    />
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      delay: 1.2,
+                      duration: 0.6,
+                    }}
+                  >
+                    <Image
+                      src={socialIcon3}
+                      alt="social-3"
+                      className="size-6 min-w-6 cursor-pointer transition-all duration-150 hover:brightness-0"
+                    />
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      delay: 1.3,
+                      duration: 0.6,
+                    }}
+                  >
+                    <Image
+                      src={socialIcon4}
+                      alt="social-4"
+                      className="size-6 min-w-6 cursor-pointer transition-all duration-150 hover:brightness-0"
+                    />
+                  </motion.div>
+                </div>
+              </div>
+
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  delay: 1.4,
+                  duration: 0.6,
+                }}
+                className="bg-foreground h-15 w-full rounded-2xl text-xl leading-6 font-semibold text-white transition-colors duration-200 hover:bg-[#222222]"
+              >
+                Connect Wallet
+              </motion.button>
+            </motion.section>
+          )}
+        </AnimatePresence>
+      </motion.header>
+    </AnimatePresence>
   );
 }

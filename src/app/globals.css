@@ -53,7 +53,7 @@
 }
 
 @layer components {
-  @media (max-width: 600px) {
+  @media (max-width: 599.1px) {
     .mobile-header {
       padding-top: 30px !important;
     }

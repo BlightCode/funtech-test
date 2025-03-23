@@ -52,7 +52,7 @@ export default function Header() {
             }}
             className="flex w-full items-center justify-between gap-8 border-b-[0.5px] pb-[30px] md:border-none md:py-4"
           >
-            <div className="flex items-center gap-10 lg:gap-16">
+            <div className="flex items-center gap-8 lg:gap-10">
               <Link href="#hero" className="flex items-center gap-2">
                 <Image
                   src={logoBlack}
@@ -61,11 +61,11 @@ export default function Header() {
                 />
                 <h3 className="text-[22px] leading-6 md:hidden">DiveSea</h3>
               </Link>
-              <div className="hidden gap-8 md:flex lg:gap-[50px]">
+              <div className="hidden gap-3 md:flex lg:gap-4">
                 {navLinks.map((link, linkIndex) => (
                   <Link
                     href={`#${link}`}
-                    className="text-text font-medium uppercase md:text-sm lg:text-lg"
+                    className="text-text rounded-[10px] px-5 py-2 font-medium uppercase transition-colors duration-200 hover:bg-[#C3C3C3] hover:text-black md:text-sm lg:text-lg"
                     key={`link-${linkIndex}`}
                   >
                     {link}
@@ -73,6 +73,11 @@ export default function Header() {
                 ))}
               </div>
             </div>
+
+            {/*
+              There is an overflow issue here on 600px - 750px tablets.
+              Can't fix without design changes.
+            */}
             <button className="bg-foreground hidden h-10 w-[140px] min-w-[140px] items-center justify-center rounded-xl text-xs text-white uppercase transition-colors duration-200 hover:bg-[#222222] md:flex lg:h-fit lg:w-[200px] lg:rounded-2xl lg:py-4 lg:text-base">
               Connect Wallet
             </button>

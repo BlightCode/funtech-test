@@ -42,7 +42,7 @@ export default function RootLayout({
     >
       <body className="flex flex-col items-center justify-between overflow-x-hidden">
         <Header />
-        <main className="bg-background flex min-h-screen w-full flex-col items-center">
+        <main className="bg-background flex min-h-screen w-full flex-col items-center xl:mb-150 xl:origin-top xl:scale-125 2xl:mb-280 2xl:scale-150">
           {children}
         </main>
         <Footer />

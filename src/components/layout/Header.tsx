@@ -38,7 +38,7 @@ export default function Header() {
           backgroundColor: headerColor,
         }}
         id="header"
-        className="sticky top-0 z-30 flex w-full flex-col items-center justify-center"
+        className="sticky top-0 z-30 flex w-full flex-col items-center justify-center xl:scale-125 xl:origin-top 2xl:scale-150"
       >
         <motion.section
           style={{

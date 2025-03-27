@@ -33,7 +33,7 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="bg-foreground mt-20 flex w-full justify-center text-white md:mt-0"
+      className="bg-foreground mt-20 flex w-full justify-center text-white md:mt-0 xl:scale-125 xl:origin-bottom 2xl:scale-150"
     >
       <section className="flex w-full flex-col py-10 md:py-16">
         <div className="flex flex-col gap-6 md:gap-10 lg:gap-14">
